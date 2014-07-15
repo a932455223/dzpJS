@@ -7,13 +7,17 @@
 	var canStop = false;
 	var startStop = false;
 	var isAnimation = false;
-	var partNum = 8;
 
 	// var tempStyle = document.body.style;
 	var requestId = 0;
 	var startime = 0;
 	var lpos = 0;
-	var destination,elm,prefix,cal,perPart;
+	var destination,elm,prefix,perPart;
+	var options ={
+		isOffset:false,
+		partNum:8,
+		afterStop:undefined
+	};
 //   var rAF = window.requestAnimationFrame	||
 // window.webkitRequestAnimationFrame	||
 // window.mozRequestAnimationFrame	||
@@ -36,13 +40,14 @@
 		accelerate = 1;
 		canStop = false;
 		startStop = false;
-		partNum = 8;
+		options.partNum = 8;
+		options.isOffset = false;
 		requestId = 0;
 		startime = 0;
 		lpos = 0;
 		destination = undefined;
 		elm = undefined;
-		cal = undefined;
+		options.cal = undefined;
 		perPart = undefined;
 	}
 	function fixDeg(deg) {
@@ -116,26 +121,24 @@
 		if (requestId) {
 			clearTimeout(requestId);
 			isAnimation = false;
-      	if(cal){ cal();}
+      	if(options.afterStop){ options.afterStop();}
 		}
     
 	}
 
 	function stopAndPointer(pointPart) {
-		perPart = 360/partNum;
-		destination = (parseInt(pointPart)-1) * perPart;
+		perPart = 360/options.partNum;
+		destination = (options.isOffset ? parseInt(pointPart) - 0.5: parseInt(pointPart) - 1) * perPart;
 	}
-	$.fn.dzp = function(_partNum,callback) {
+
+	$.fn.dzp = function(_options) {
 		//判断没有动画时候才开始动画
 		if(!isAnimation){
-			if (_partNum) {
-				partNum = _partNum;
-			}
-    	if(typeof callback === 'function'){
-      	cal = callback;
-    	}
+			$.extend(options,_options);
+    	
 			elm = $(this[0]);
 			start();
+			
 		}
 		
 		return {

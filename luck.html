@@ -125,7 +125,12 @@
 <script type="text/javascript">
 var result;
 	$('#win_btn').click(function(){
-		result = $(this).dzp(6);
+		result = $(this).dzp({
+			partNum: 6,
+			afterStop: function(){
+				console.log('指针停止');
+			}
+		});
 	});
 </script>
 </html>

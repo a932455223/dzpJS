@@ -6,8 +6,15 @@ dzpJS帮助快速制作大转盘前端效果
 ####html
 		<div id='dzp'></div>
 ####javascript
-		var result = $('#dzp').dzp(8,afterStop);
-第一个参数'8'代表大转盘盘面共有8块，afterStop是转盘停止下来时候调用的方法。
+		var result = $('#dzp').dzp({
+			isOffset:false,
+			partNum:8,
+			afterStop: function(){
+				console.log('指针停止.');
+				}
+			});
+####参数
+isOffset:指针停止时是否需要额外的便宜量。如果初始的时候，指针指向分割线，则需要额外偏移，应该设为`true`，如初始时指向奖品，应为`false`。
 在需要让大转盘停止下来的时候，就调用result中得方法。下例中的5指的是指针停在第5个盘面上。
 			
 			result.stop(5);
