@@ -107,11 +107,6 @@
 	function start() {
 		//这个if语句在转盘停止转动并且没有重置的时候阻止转盘转动.
 		if (!requestId) {
-			if (window.performance.now) {
-				startime = window.performance.now();
-			} else {
-				startime = Date.now();
-			}
 			requestId = setInterval(render, 1000 / 60);
 			isAnimation = true;
 		}
