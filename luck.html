@@ -10,7 +10,7 @@
     <meta name="description" content="抽奖">
     <title>抽奖</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script type="text/javascript" src='js/tts.js'></script>
+    <script type="text/javascript" src='js/zepto.min.js'></script>
 </head>
 <body>
 		<div style="position: relative">
@@ -131,6 +131,10 @@ var result;
 				console.log('指针停止');
 			}
 		});
+
+		setTimeout(function(){
+			result.stop(2);
+		},3000);
 	});
 </script>
 </html>
