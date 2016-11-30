@@ -6,8 +6,8 @@ var config = {
         index: './src/js/index.js'
     },
     output: {
-        path: './dist/js',
-        filename: '[name].js'
+        path: __dirname+'/dist/js',
+        filename: '[name].js',
     },
     resolveLoader: {
         root: path.join(__dirname, 'node_modules')
@@ -29,12 +29,12 @@ var config = {
         }),
         new htmlWebpack({
             template: __dirname + '/src/index.html',
-            filename: __dirname + '/dist/index.html',
+            filename:__dirname + '/dist/index.html',
             chunks: ['index']
         })
     ],
     devServer: {
-        contentBase: './dist',
+        contentBase: __dirname + '/dist',
         inline: true
     }
 }
