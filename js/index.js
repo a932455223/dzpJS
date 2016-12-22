@@ -1,10 +1,9 @@
-//html livereload.
 
-require('../css/style.css');
+require('../css/example.less');
+require('../index.html');
 
 var dzp = require('./dzp');
 
-//html livereload.
 var dzp = new Dzp('dzpWrap',{
 	wheelImg:'../images/round.png',
 	needleImg:'../images/needle.png',

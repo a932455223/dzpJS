@@ -1,5 +1,6 @@
 var webpack = require("webpack");
 var htmlWebpack = require('html-webpack-plugin');
+var autoPrefix = require('less-plugin-autoprefix');
 var path = require('path');
 var config = {
     entry: {
@@ -13,13 +14,17 @@ var config = {
         root: path.join(__dirname, 'node_modules')
     },
     module: {
-        loaders: [{
+        loaders: [
+            {
                 test: /\.html$/,
                 loader: "raw"
             },
-            { test: /\.css$/, loader: "style!css" },
+            { test: /\.less$/, loader: "style!css!less" },
             { test: /\.(png|jpg)$/, loader: "url-loader?limit=8192&name=../images/[name].[ext]" }
         ]
+    },
+    lessLoader:{
+        lessPlugins:[new autoPrefix()]
     },
     plugins: [
         new webpack.DefinePlugin({

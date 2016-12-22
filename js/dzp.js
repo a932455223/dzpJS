@@ -88,6 +88,7 @@
 			this.width = this.container.clientWidth - parseFloat(getStyle(this.container,'paddingLeft')) - parseFloat(getStyle(this.container,'paddingRight'));
 			this.height = this.width;
 			this.maxSpeed = 0.5;
+
 			this.decelerationDistance = (function(){
 				var an = parseFloat((this.maxSpeed - this.accelerate).toFixed(2));
 				var a1 = 0;
@@ -95,6 +96,7 @@
 				var n = an/d+1;
 				return parseFloat(((a1+an)*n*0.5).toFixed(3));
 			}.bind(this))();
+			
 			this.canvas.width = this.width;
 			this.canvas.height = this.height;
 			this.container.appendChild(this.canvas);
