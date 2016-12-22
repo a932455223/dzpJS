@@ -3,11 +3,11 @@ var htmlWebpack = require('html-webpack-plugin');
 var path = require('path');
 var config = {
     entry: {
-        index: './src/js/index.js'
+        index: './js/index.js'
     },
     output: {
         path: __dirname+'/dist/js',
-        filename: '[name].js',
+        filename: '[name].js'
     },
     resolveLoader: {
         root: path.join(__dirname, 'node_modules')
@@ -26,15 +26,10 @@ var config = {
             'process.env': {
                 'NODE_ENV': JSON.stringify('development')
             }
-        }),
-        new htmlWebpack({
-            template: __dirname + '/src/index.html',
-            filename:__dirname + '/dist/index.html',
-            chunks: ['index']
         })
     ],
     devServer: {
-        contentBase: __dirname + '/dist',
+        contentBase:__dirname,
         inline: true
     }
 }
