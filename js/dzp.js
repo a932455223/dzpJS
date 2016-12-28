@@ -165,6 +165,7 @@
 
 			if(this.state === 3 && this.speed === 0){
 				this.state = 4;
+				this.emit('stop');
 			}
 
 			
@@ -255,7 +256,7 @@
 			this._events && this._events[name] && (this._events[name] = []);
 		},
 		emit:function(name){
-			if(this._events[name].length > 0){
+			if(this._events[name] && this._events[name].length > 0){
 				for(var i in this._events[name]){
 					this._events[name][i].apply(this,Array.prototype.slice.call(arguments,1));
 				}

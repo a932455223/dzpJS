@@ -28,3 +28,8 @@ dzp.on('click',function(){
 dzp.on('timeout',function(){
 	console.log('timeout');
 });
+
+
+dzp.on('stop',function(){
+	console.log('%cstop.','color:DeepSkyBlue');
+})
