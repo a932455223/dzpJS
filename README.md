@@ -19,7 +19,6 @@ dzpJS帮助快速制作大转盘前端效果，特点：
 			needleImg:'../images/needle.png',
 			partNum:6,
 			wheelRun:true,
-			offset:false,
 			timeout:10*1000,
 			needleRatio:0.49,
 			eventRange:0.3
@@ -29,6 +28,17 @@ dzpJS帮助快速制作大转盘前端效果，特点：
 #### 参数
 
 partNum:大转盘的表盘一共有几块
+
+wheelImg:转盘图片路径
+
+partNum:转盘份数
+
+timeout:多久时间后没有调用stop，则触发`timeout`事件
+
+needleRatio:中心的指针，占盘面的比例
+
+eventRange:中心的指针的可点击区域
+
 
 在需要让大转盘停止下来的时候，就调用`result`对象的方法。下例中的5指的是指针停在第5个盘面上。
 
