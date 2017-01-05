@@ -10,7 +10,6 @@
     <meta name="description" content="抽奖">
     <title>抽奖</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script type="text/javascript" src='js/zepto.min.js'></script>
 </head>
 <body>
 		<div style="position: relative">
@@ -99,42 +98,8 @@
 			</div>
 		</div>
 			<div class="down">
-				<div class="lucky">恭喜某某某中奖</div>
-				<div class="title1">奖项设置</div>
-				<p>1.活动时间：<span>12月10日-12月24日</span></p>
-				<p>2.每位只可抽奖一次，<span>中奖率100%；</span></p>
-				<p>3.填写正确的手机号码和QQ号，将作为兑奖唯一凭证；</p>
-				<p>4.中奖之后请在时间内联系；</p>
-				<p>5.此活动最终解释权归yeapoo所有。</p>
-				<div class="title1">活动说明</div>
-				<p>1.活动时间：12月10日-12月24日；</p>
-				<p>2.中奖之后请在时间内联系；</p>
-				<p>3.奖品将在活动日后<span>7个工作日内</span>发放。</p>
-				<div class="title2">分享到:</div>
-				<ul>
-					<li><a href="#" class="sina"></a></li>
-					<li><a href="#" class="tengxun"></a></li>
-					<li><a href="#" class="douban"></a></li>
-					<li><a href="#" class="renren"></a></li>
-					<div class="clear"></div>
-				</ul>
-				<div class="clear"></div>
+				
 			</div>
+			<script src='/js/dzp.js'></script>
 </body>
-<script type="text/javascript" src="js/dzp.js"></script>
-<script type="text/javascript">
-var result;
-	$('#win_btn').click(function(){
-		result = $(this).dzp({
-			partNum: 6,
-			afterStop: function(){
-				console.log('指针停止');
-			}
-		});
-
-		setTimeout(function(){
-			result.stop(6);
-		},3000);
-	});
-</script>
 </html>
