@@ -20,7 +20,7 @@
 			left:box.left + scrollLeft - clientLeft
 		}
 	}
-	
+
 	//两点间距离公式
 	function pointDistance(x1,y1,x2,y2){
 		return Math.abs(Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2)));
@@ -37,8 +37,8 @@
 				}
 			}
 		}
-	}	
-	
+	}
+
 	//
 	function loadImg(imgs,callback){
 		var imgNodes = [];
@@ -114,7 +114,7 @@
 				that.needleHeight = (that.needleWidth/that.needleImg.width)*that.needleImg.height; //等比例缩放
 				that.draw();
 			});
-			
+
 			this.eventRegion = Math.round(this.width*this.config.eventRange*0.5);
 			this.canvas.addEventListener('click',function(evt){
 				var offset = getOffsetRect(that.canvas);
@@ -122,20 +122,19 @@
 				var y = evt.pageY - offset.top;
 				var distance = pointDistance(x,y,this.x0,this.y0);
 				if(distance < this.eventRegion && this.clickable){//触发事件
-					this.clickable = false;
 					if(!this._events ||!this._events['click'] || this._events['click'].length === 0){
 						this.run();
 					}else{
 						this.emit('click');
 					}
-					
+
 				}
 			}.bind(this));
 		},
 		draw:function(){
 			this.ctx.clearRect(0,0,this.width,this.height);
 			this.ctx.save();
-			
+
 
 			if(this.state === 1 && this.speed === this.maxSpeed){
 				this.state = 2;
@@ -152,7 +151,7 @@
 				var diff = fixed(this.beginSlowDegree - this.rotate,3);
 				while(diff < 0){
 					diff = fixed(diff+2*Math.PI,3);
-				}		
+				}
 				 if(diff <= this.maxSpeed){
 					this.speed = diff;
 					this.beginStop = true;
@@ -165,14 +164,15 @@
 
 			if(this.state === 3 && this.speed === 0){
 				this.state = 4;
+				this.clickable = true;
 				this.emit('stop');
 			}
 
-			
+
 			if(this.state === 1 || this.state === 3){
 				this.speed = parseFloat((this.speed+this.accelerate).toFixed(2));
 			}
-			
+
 			// console.log(this.speed);
 			this.rotate = this.rotate + this.speed;
 			this.rotate = parseFloat((this.rotate > 2*Math.PI ? this.rotate - 2*Math.PI : this.rotate).toFixed(3));
@@ -186,14 +186,14 @@
 			}else{
 				this.ctx.drawImage(this.wheelImg,-this.width*0.5,-this.width*0.5,this.width,this.width);
 			}
-			
+
 
 			if(!this.config.wheelRun){
 				this.ctx.rotate(this.rotate);
 			}
 
 			this.ctx.drawImage(this.needleImg,-this.needleWidth*0.5,-this.needleHeight*0.5,this.needleWidth,this.needleHeight);
-			
+
 			if(!this.config.wheelRun){
 				this.ctx.restore();
 			}
@@ -236,16 +236,13 @@
 				this.prepareStop = true;
 				this.minTargetDegree = (pointAt-1)*(2*Math.PI/this.config.partNum);
 				this.beginSlowDegree = this.minTargetDegree - this.decelerationDistance;
-				console.log(this.beginSlowDegree);
 				(function(){
 					while(this.beginSlowDegree < 0){
 						this.beginSlowDegree = fixed(this.beginSlowDegree + 2*Math.PI,3);
 					}
 				}.bind(this))();
-				console.log('minTargetDegree:'+this.minTargetDegree);
-				console.log('beginSlowDegree:'+this.beginSlowDegree);
 			}
-			
+
 		},
 		on:function(name,callback){
 			this._events = this._events || {};
@@ -264,6 +261,7 @@
 		},
 		run:function(){
 			if(this.state === 0){
+				this.clickable = false;
 				this.state = 1;
 				this.draw();
 			}
@@ -280,4 +278,3 @@
 	this.container = typeof wrap === 'string' ? document.getElementById(wrap):wrap;
 	this.init(opts);
 },window);
-
