@@ -7,6 +7,12 @@ dzpJS帮助快速制作大转盘前端效果，特点：
 
 2.流畅，尤其在`andorid`上无卡顿
 
+## example
+注：用手机看效果更佳
+
+[example 1](http://simon-du.me/dzpJs/example/wheel.html)
+
+[example 2](http://simon-du.me/dzpJs/example/needle.html)
 
 ## usage
 
