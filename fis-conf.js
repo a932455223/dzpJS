@@ -25,7 +25,8 @@ fis.match('**.png', {
 fis.match('**.html', {
   optimizer: fis.plugin('html-minifier')
 })
-.match('**.{js,less,png,css,jpg,gif}',{
+
+fis.media('prod').match('**.{js,less,png,css,jpg,gif}',{
 	useHash:true,
 	url:'/public/dzpJs$0'
 })
