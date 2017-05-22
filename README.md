@@ -12,7 +12,11 @@ dzpJS帮助快速制作大转盘前端效果，特点：
 
 [example 1](http://simon-du.me/dzpJs/example/wheel.html)
 
+![ wheel ](/images/dzp-wheel.png)
+
 [example 2](http://simon-du.me/dzpJs/example/needle.html)
+
+![ wheel ](/images/dzp-needle.png)
 
 ## usage
 
